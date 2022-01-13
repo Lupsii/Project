@@ -70,7 +70,7 @@ namespace Lucca.Business.Managers
                 }
                 
 
-                if (createExpenseModel.Date < DateTime.Now && createExpenseModel.Date > DateTime.Now.AddMonths(-3)) 
+                if (createExpenseModel.Date <= DateTime.Now && createExpenseModel.Date >= DateTime.Now.AddMonths(-3)) 
                 {
                     newExpenseDTO.Date = createExpenseModel.Date;
                 }
@@ -78,7 +78,7 @@ namespace Lucca.Business.Managers
                 {
                     return new ValidationModel()
                     {
-                        Errors = new List<string>() { "Invalid Expense type. Expense type doesn't exist." },
+                        Errors = new List<string>() { "Invalid Expense date. Date is older than 3 months." },
                         Succeeded = false
                     };
                 }
@@ -91,7 +91,7 @@ namespace Lucca.Business.Managers
                 {
                     return new ValidationModel()
                     {
-                        Errors = new List<string>() { "Invalid Expense type. Expense type doesn't exist." },
+                        Errors = new List<string>() { "Invalid currency. Expense currency doesn't exist." },
                         Succeeded = false
                     };
                 }
@@ -100,7 +100,7 @@ namespace Lucca.Business.Managers
                 {
                     return new ValidationModel()
                     {
-                        Errors = new List<string>() { "Invalid currency type. This user doesn't use this currency." },
+                        Errors = new List<string>() { "Invalid currency. This user doesn't use this currency." },
                         Succeeded = false
                     };
                 }

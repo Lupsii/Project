@@ -61,28 +61,6 @@ namespace Lucca.Controllers
             }
         }
 
-        [HttpGet("List/")]
-        public async Task<IActionResult> Get(CreateExpenseModel createExpenseModel)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {                   
-
-                    var Result = await _expenseManager.CreateExpense(createExpenseModel);
-                    return Ok("The expense has been created !");
-                }
-                else
-                {
-                    return BadRequest("Invalid Payload");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("An error occured during the create of an Expense : " + ex.Message);
-            }
-        }
-        
         // All expenses by user
         [HttpGet("AllUserExpenses")]
         public async Task<IActionResult> GetAllUserExpenses(GetUserExpensesModel getUserExpensesApiRequestModel)

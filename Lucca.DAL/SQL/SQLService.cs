@@ -22,7 +22,7 @@ namespace Lucca.DAL.SQL
 
         public async Task<UserDTO> GetUserById(int userId)
         {
-            var user = await _expenseContext.Users.FirstOrDefaultAsync(x => x.UserId == userId);
+            var user = await _expenseContext.Users.SingleOrDefaultAsync(x => x.UserId == userId);
             UserDTO userDTO = new UserDTO();            
 
             return userDTO = user.ToDto();
@@ -33,7 +33,7 @@ namespace Lucca.DAL.SQL
         {
             Expense newExpense = new Expense()
             {
-                User = await _expenseContext.Users.FirstOrDefaultAsync(x => x.UserId == expenseDTO.User.UserId),
+                User = await _expenseContext.Users.SingleOrDefaultAsync(x => x.UserId == expenseDTO.User.UserId),
                 ExpenseType = expenseDTO.ExpenseType,
                 Value = expenseDTO.Value,
                 Currency = expenseDTO.Currency,
@@ -71,7 +71,7 @@ namespace Lucca.DAL.SQL
         {
             ExpenseDTO existingExpense = new ExpenseDTO();
 
-            var expense = await _expenseContext.Expenses.Where(e => e.Date == date && e.Value == value && e.Currency == currency && e.ExpenseType == expenseType).SingleOrDefaultAsync();
+            var expense = await _expenseContext.Expenses.SingleOrDefaultAsync(e => e.Date == date && e.Value == value && e.Currency == currency && e.ExpenseType == expenseType);
 
             if (expense is not null)
                 return expense.ToDto();

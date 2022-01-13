@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Lucca.Business\Lucca.Business.csproj" />
     <ProjectReference Include="..\Lucca.Common\Lucca.Common.csproj" />
+    <ProjectReference Include="..\Lucca.DAL\Lucca.DAL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lucca", "Lucca\Lucca.csproj", "{BB0FBD68-2B74-4178-B6EE-12EE18C21359}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D31F8414-BDD8-45CD-A984-CE4685BD7385} = {D31F8414-BDD8-45CD-A984-CE4685BD7385}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lucca.Business", "Lucca.Business\Lucca.Business.csproj", "{DE4DF98C-B95D-4044-80D5-600DBBC9C533}"
 EndProject
@@ -11,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lucca.Common", "Lucca.Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lucca.DAL", "Lucca.DAL\Lucca.DAL.csproj", "{94A2CDF8-0B06-49D5-B5CD-B1B615100D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{D31F8414-BDD8-45CD-A984-CE4685BD7385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{D31F8414-BDD8-45CD-A984-CE4685BD7385}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
