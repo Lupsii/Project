@@ -27,21 +27,12 @@ namespace Lucca.Controllers
 
         // Create Expense
         [HttpPost("Create")]
-        public async Task<IActionResult> Post(ExpenseApiRequestModel expenseApiRequestModel)
+        public async Task<IActionResult> Post(CreateExpenseModel createExpenseModel)
         {
             try
             {
                 if (ModelState.IsValid)
-                {
-                    var createExpenseModel = new CreateExpenseModel()
-                    {
-                        UserId = expenseApiRequestModel.UserId,
-                        ExpenseType = expenseApiRequestModel.ExpenseType,
-                        Date = expenseApiRequestModel.Date,
-                        Value = expenseApiRequestModel.Value,
-                        Currency = expenseApiRequestModel.Currency,
-                        Comment = expenseApiRequestModel.Comment
-                    };
+                {           
 
                     var Result = await _expenseManager.CreateExpense(createExpenseModel);
 
@@ -122,9 +113,10 @@ namespace Lucca.Controllers
 
 
                     List<GetUserExpensesResponseModel> response = new List<GetUserExpensesResponseModel>();
-                    // Json Creation
+
                     foreach(ExpenseDTO expense in expenseDTOs)
                     {
+                        // Formatted response
                         GetUserExpensesResponseModel newItem = new GetUserExpensesResponseModel()
                         {
                             ExpenseId = expense.ExpenseId,
@@ -151,15 +143,5 @@ namespace Lucca.Controllers
                 throw new Exception("An error occured during the create of an Expense : " + ex.Message);
             }
         }
-
-
-
-        // Get Expenses by user
-
-        // Get Expense by User
-
-        // Get all Expenses + filters
-
-        // Get Expense by Id
     }
 }
